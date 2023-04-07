@@ -1,31 +1,25 @@
-GET http://localhost:3000/
+Get http://localhost:4000/
 
 ###
 
-GET http://localhost:3000/bye
-
-###
-
-POST http://localhost:3000/
+POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-   "username": "hafiz",
-    "password": "apihhafiz",
-    "email": "apihazman@gmail.com",
-    "name": "Mohamad Hafiz"
-     
+   "username": "mirull",
+    "password": "mirullencem",
+    "name": " Amirul",
+    "email": "yoish@gmail.com"
 }
 
 ###
 
-POST http://localhost:3000/register
+POST http://localhost:4000/
 Content-Type: application/json
 
 {
-    "username": "idhamm",
-    "password": "adhanencem",
-    "email": "idhammm@gmail.com",
-    "name": " Idham Isa"
-
+    "username": "mirull",
+    "password": "mirullencem",
+    "name": " Amirul",
+    "email": "yoish@gmail.com"
 }
