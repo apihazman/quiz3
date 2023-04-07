@@ -31,6 +31,8 @@ app.post('/',(req, res) => {
   )
     });
 
+    app.use(express.json());
+
   app.post('/register', (req,res) => {
     let data = req.body
     res.send(

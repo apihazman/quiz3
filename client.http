@@ -12,6 +12,8 @@ Content-Type: application/json
 {
    "username": "hafiz",
     "password": "apihhafiz",
+    "email": "apihazman@gmail.com",
+    "name": "Mohamad Hafiz"
      
 }
 
@@ -24,6 +26,6 @@ Content-Type: application/json
     "username": "idhamm",
     "password": "adhanencem",
     "email": "idhammm@gmail.com",
-    "nama": " Idham Isa"
+    "name": " Idham Isa"
 
 }
