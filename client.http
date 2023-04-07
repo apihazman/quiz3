@@ -1,0 +1,29 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/bye
+
+###
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+   "username": "hafiz",
+    "password": "apihhafiz",
+     
+}
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "idhamm",
+    "password": "adhanencem",
+    "email": "idhammm@gmail.com",
+    "nama": " Idham Isa"
+
+}
