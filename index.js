@@ -1,5 +1,5 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const port = 4000
 
 let dbUsers = [
@@ -28,51 +28,29 @@ app.post('/',(req, res) => {
       data.username,
       data.password
     )
-  )
-    });
+  );
+});
 
-    app.use(express.json());
+  app.use(express.json());
 
   app.post('/register', (req,res) => {
     let data = req.body
     res.send(
+      register(
       data.username,
       data.password,
       data.nama,
       data.email
     )
-  })
+    );
+});
   
-  
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/bye', (req, res) => {
-    res.send('Bye Bye World!')
-  })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app at https://localhosts: ${port}`);
+});
 
-//creat a post route for user to log in
-app.post('/login', (req, res) => {
-  // get the username and pasword from the request body
-  const { username, password } =req.body;
 
-  // find the username in the database
-  const user = bdUsers.find(user => user.username === uesrname && user.password === password);
-
-  // if
-  if (user) {
-    res.send(user);
-  } else {
-    // if user is not found, return an error message
-    res.send({ error: "User not found "});
-  }
-})
 
 function login(username, password){
   console.log("someone try to login with", username, password)
@@ -92,6 +70,11 @@ function login(username, password){
 
   function register(newusername, newpassword, newname, newemail){
 
+    dbUsers.find(element => {
+      console.log(element)
+    
+    })
+
     dbUsers.push({
         username : newusername,
         password : newpassword,
@@ -99,6 +82,5 @@ function login(username, password){
         email : newemail,
     })
 
-    
     return "Register Succesfully"
 }
