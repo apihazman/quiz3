@@ -21,7 +21,7 @@ let dbUsers = [
 
 app.use(express.json());
 
-app.post('/',(req, res) => {
+app.post('/login',(req, res) => {
   let data = req.body
   res.send(
     login(
@@ -39,16 +39,40 @@ app.post('/',(req, res) => {
       register(
       data.username,
       data.password,
-      data.nama,
+      data.name,
       data.email
     )
     );
 });
   
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.get('/bye', (req, res) => {
+    res.send('Bye Bye World!')
+  })
 
 app.listen(port, () => {
   console.log(`Example app at https://localhosts: ${port}`);
 });
+
+//creat a post route for user to log in
+app.post('/login', (req, res) => {
+  // get the username and pasword from the request body
+  const { username, password } =req.body;
+
+  // find the username in the database
+  const user = dbUsers.find(user => user.username === uesrname && user.password === password);
+
+  // if
+  if (user) {
+    res.send(user);
+  } else {
+    // if user is not found, return an error message
+    res.send({ error: "User not found "});
+  }
+})
 
 
 

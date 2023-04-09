@@ -2,14 +2,18 @@ Get http://localhost:4000/
 
 ###
 
-POST http://localhost:4000/
+Get http://localhost:4000/
+Content-Type: application/json
+
+###
+
+POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-   "username": "fkekk",
-    "password": "fkekkutem",
-    "name": " fakulti",
-    "email": "fkekk@gmail.com"
+   "username": "alyaa",
+    "password": "alyazaff"
+    
 }
 
 ###
@@ -18,8 +22,8 @@ POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-    "username": "fkekk",
-    "password": "fkekkutem",
-    "name": " fakulti",
-    "email": "fkekk@gmail.com"
+    "username": "alyaa",
+    "password": "alyazaff",
+    "name": " Alyaa",
+    "email": "zafiraa@gmail.com"
 }
