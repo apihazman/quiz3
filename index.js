@@ -1,6 +1,7 @@
+const jwt = require('jsonwebtoken');
 const express = require('express');
 const app = express();
-const port = 4000
+const port = 3000
 
 let dbUsers = [
   {
@@ -16,6 +17,13 @@ let dbUsers = [
     name : "Wan Amirul",
     email : "wanamirul@gmail.com",
 
+},
+{
+  
+  username: "alyaa",
+  password: "alyazaff",
+  name: " Alyaa",
+  email: "zafiraa@gmail.com"
 }
 ]
 
@@ -23,12 +31,13 @@ app.use(express.json());
 
 app.post('/login',(req, res) => {
   let data = req.body
-  res.send(
-    login(
+  //res.send(
+    const user = login(
       data.username,
       data.password
     )
-  );
+
+res.send( generateToken(user))
 });
 
   app.use(express.json());
@@ -45,12 +54,13 @@ app.post('/login',(req, res) => {
     );
 });
   
-app.get('/', (req, res) => {
+app.get('/hello',verifyToken, (req, res) => {
+  console.log(req.user)
   res.send('Hello World!')
 })
 
 app.get('/bye', (req, res) => {
-    res.send('Bye Bye World!')
+    res.send('bye bye World!')
   })
 
 app.listen(port, () => {
@@ -63,7 +73,7 @@ app.post('/login', (req, res) => {
   const { username, password } =req.body;
 
   // find the username in the database
-  const user = dbUsers.find(user => user.username === uesrname && user.password === password);
+  const user = dbUsers.find(user => user.username === username && user.password === password);
 
   // if
   if (user) {
@@ -108,3 +118,31 @@ function login(username, password){
 
     return "Register Succesfully"
 }
+
+// to generate JWT Token
+
+function generateToken(userProfile) {
+ return jwt.sign(
+  userProfile,
+ 'secret',
+ { expiresIn: 60 * 60 });
+}
+
+//to verify jwt token
+function verifyToken(req, res, next) {
+  let header = req.headers.authorization
+  console.log(header);
+
+  let token = header.split(' ')[1]
+
+  jwt.verify(token, 'secret', function(err, decoded) {
+   if(err) {
+    res.send("Invalid Token")
+   }
+  
+    req.user = decoded
+
+    next()
+  });
+}
+
